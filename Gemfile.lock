@@ -30,7 +30,6 @@ PLATFORMS
 
 DEPENDENCIES
   pry
-  rake
   require_all
   rspec
 
