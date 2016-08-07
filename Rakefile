@@ -13,3 +13,6 @@ task :console do
   puts "Console started:"
   Pry.start
 end
+
+task :test do
+	ruby "rspec/"
