@@ -1,4 +1,4 @@
-require_relative "message"
+require_relative "message.rb"
 
 class MusicLibraryController
   def initialize(path = "./db/mp3s")

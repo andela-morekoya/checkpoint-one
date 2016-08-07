@@ -1,5 +1,5 @@
-require_relative "artist"
-require_relative "genre"
+require_relative "artist.rb"
+require_relative "genre.rb"
 
 class Song
   attr_accessor :name, :artist, :genre
