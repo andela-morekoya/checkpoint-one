@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/andela-morekoya/checkpoint-one-music-library/badges/gpa.svg)](https://codeclimate.com/github/andela-morekoya/checkpoint-one-music-library)
+
 # Ruby Music Library
 
 ## Overview
