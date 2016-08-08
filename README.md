@@ -1,11 +1,16 @@
 [![Code Climate](https://codeclimate.com/github/andela-morekoya/checkpoint-one-music-library/badges/gpa.svg)](https://codeclimate.com/github/andela-morekoya/checkpoint-one-music-library)
 [![Build Status](https://travis-ci.org/andela-morekoya/checkpoint-one.svg?branch=master)](https://travis-ci.org/andela-morekoya/checkpoint-one)
 [![Coverage Status](https://coveralls.io/repos/github/andela-morekoya/checkpoint-one/badge.svg?branch=master)](https://coveralls.io/github/andela-morekoya/checkpoint-one?branch=master)
+[![Test Coverage](https://codeclimate.com/github/andela-morekoya/checkpoint-one-music-library/badges/coverage.svg)](https://codeclimate.com/github/andela-morekoya/checkpoint-one-music-library/coverage)
 # Ruby Music Library
 
 ## Overview
 This is a command line based music library that parses a directory of MP3 files and imports them into a library. Users are then able to run the commands listed in the commands section below.
 
+## Dependencies
+ - pry
+ - rpsec
+ - require_all
 
 ## Installation
  - First ensure you have ruby installed on your system. 
