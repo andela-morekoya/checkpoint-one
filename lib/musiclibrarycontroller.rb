@@ -60,37 +60,25 @@ class MusicLibraryController
   end
 
   def list_artist
-    result = Artist.find_by_name(get_name(Artist))
-
-    if result
-      result.songs.each do |song|
-        result.genres.each do |genre|
-          Message.song_name(result.name, song.name, genre.name)
-        end
-      end
-    else
-      Message.not_found(Artist)
-    end
+    Message.get_name(Artist)
+    result = Artist.find_by_name(gets.chomp)
+    print_data(result)
   end
 
   def list_genre
-    result = Genre.find_by_name(get_name(Genre))
-
-    if result
-      result.songs.each do |song|
-        result.artists.each do |artists|
-          Message.song_name(artists.name, song.name, result.name)
-        end
-      end
-    else
-      Message.not_found(Genre)
-    end
+    Message.get_name(Genre)
+    result = Genre.find_by_name(gets.chomp)
+    print_data(result)
   end
 
-  def get_name(klass)
-    Message.get_name(klass.to_s)
-    name = gets.chomp
-    name
+  def print_data(klass)
+    if klass
+      klass.songs.each do |song|
+        Message.song_name(song.artist.name, song.name, song.genre.name)
+      end
+    else
+      Message.not_found(klass)
+    end
   end
 
   def list_commands
