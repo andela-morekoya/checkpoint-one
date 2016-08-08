@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/andela-morekoya/checkpoint-one-music-library/badges/gpa.svg)](https://codeclimate.com/github/andela-morekoya/checkpoint-one-music-library)
+[![Code Climate](https://codeclimate.com/github/andela-morekoya/checkpoint-one/badges/gpa.svg)](https://codeclimate.com/github/andela-morekoya/checkpoint-one)
 [![Build Status](https://travis-ci.org/andela-morekoya/checkpoint-one.svg?branch=master)](https://travis-ci.org/andela-morekoya/checkpoint-one)
 [![Coverage Status](https://coveralls.io/repos/github/andela-morekoya/checkpoint-one/badge.svg?branch=master)](https://coveralls.io/github/andela-morekoya/checkpoint-one?branch=master)
 # Ruby Music Library
