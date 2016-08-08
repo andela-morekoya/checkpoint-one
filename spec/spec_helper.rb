@@ -1,4 +1,7 @@
 require_relative "../config/environment.rb"
+require 'coveralls'
+
+Coveralls.wear!
 
 RSpec.configure do |config|
   config.order = :default
