@@ -3,8 +3,7 @@ class Message
     puts " 
      Welcome to the Music Library
      What would you like to do? Enter a command
-     (type help to get a list of valid commands)
-     "
+     (type help to get a list of valid commands)"
   end
 
   def self.invalid
@@ -44,6 +43,6 @@ class Message
   end
 
   def self.get_name(name)
-    puts "Enter the #{name} name to search for: "
+    puts "Enter the #{name}'s name to search for: "
   end
 end

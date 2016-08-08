@@ -60,7 +60,7 @@ class MusicLibraryController
   end
 
   def list_artist
-    result = Artist.find_by_name(get_name("artist"))
+    result = Artist.find_by_name(get_name(Artist))
 
     if result
       result.songs.each do |song|
@@ -74,7 +74,7 @@ class MusicLibraryController
   end
 
   def list_genre
-    result = Genre.find_by_name(get_name("genre"))
+    result = Genre.find_by_name(get_name(Genre))
 
     if result
       result.songs.each do |song|
@@ -87,8 +87,8 @@ class MusicLibraryController
     end
   end
 
-  def get_name(name)
-    Message.get_name(name)
+  def get_name(klass)
+    Message.get_name(klass.to_s)
     name = gets.chomp
     name
   end

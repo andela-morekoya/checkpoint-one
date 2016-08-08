@@ -6,6 +6,10 @@
 ## Overview
 This is a command line based music library that parses a directory of MP3 files and imports them into a library. Users are then able to run the commands listed in the commands section below.
 
+## Dependencies
+ - pry
+ - rpsec
+ - require_all
 
 ## Installation
  - First ensure you have ruby installed on your system. 
