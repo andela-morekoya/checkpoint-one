@@ -1,6 +1,7 @@
 class Genre
   extend Concerns::Findable
-  
+  include Concerns::LibraryCommon
+
   attr_accessor :name
   attr_reader :songs
   
@@ -12,28 +13,10 @@ class Genre
     @genre_artists = []
   end
 
-  def self.all
-    @@all
-  end
-
-  def self.destroy_all
-    @@all = []
-  end
-
-  def save
-    @@all.push(self)
-  end
-
-  def self.create(genre_name)
-    genre = Genre.new(genre_name)
-    genre.save
-    genre
-  end
-
   def add_song(song)
     song.genre = self if song.genre != self
     @songs.push(song)
-    @genre_artists.push(song.artist) if !(@genre_artists.include?song.artist)
+    @genre_artists.push(song.artist) unless @genre_artists.include?song.artist
   end
 
   def artists

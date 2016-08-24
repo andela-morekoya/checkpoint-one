@@ -3,6 +3,7 @@ require_relative "genre"
 
 class Song
   extend Concerns::Findable
+  include Concerns::LibraryCommon
 
   attr_accessor :name, :artist, :genre
 
@@ -14,24 +15,6 @@ class Song
     @artist = artist if artist.instance_of?(Artist)
     self.artist = artist if artist
     self.genre = genre if genre
-  end
-
-  def self.all
-    @@all
-  end
-
-  def self.destroy_all
-    @@all = []
-  end
-
-  def save
-    @@all.push(self)
-  end
-
-  def self.create(song_name)
-    song = Song.new(song_name)
-    song.save
-    song
   end
 
   def artist=(an_artist)

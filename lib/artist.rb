@@ -1,6 +1,7 @@
 class Artist
   extend Concerns::Findable
-  
+  include Concerns::LibraryCommon
+
   attr_accessor :name, :song
   attr_reader :songs
 
@@ -11,24 +12,6 @@ class Artist
     @song = song_name
     @songs = []
     @song_genres = []
-  end
-
-  def self.all
-    @@all
-  end
-
-  def self.destroy_all
-    @@all = []
-  end
-
-  def save
-    @@all.push(self) unless @@all.include?(self)
-  end
-
-  def self.create(artist_name)
-    artist = Artist.new(artist_name)
-    artist.save
-    artist
   end
 
   def add_song(song)
