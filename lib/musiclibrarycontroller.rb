@@ -18,7 +18,7 @@ class MusicLibraryController
 
   def call
     Message.intro
-    command = gets.chomp.downcase
+    command = gets.downcase
     run_command(command)
 
   end
@@ -54,7 +54,7 @@ class MusicLibraryController
   def play_song
     size = Song.all.length
     Message.what_song(size)
-    selection = gets.chomp.to_i - 1
+    selection = gets.to_i - 1
 
     if [0..size].include? selection
       Message.invalid_song
@@ -65,13 +65,13 @@ class MusicLibraryController
 
   def list_artist
     Message.get_name(Artist)
-    result = Artist.find_by_name(gets.chomp)
+    result = Artist.find_by_name(gets)
     print_data(result)
   end
 
   def list_genre
     Message.get_name(Genre)
-    result = Genre.find_by_name(gets.chomp)
+    result = Genre.find_by_name(gets)
     print_data(result)
   end
 

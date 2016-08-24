@@ -44,21 +44,6 @@ class Song
     a_genre.add_song(self) unless a_genre.songs.include?(self)
   end
 
-  # def self.find_by_name(song_name)
-  #   result = nil
-  #   @@all.each {|song| result = song if song.name == song_name}
-  #   result
-  # end
-
-  # def self.find_or_create_by_name(song_name)
-  #   found = Song.find_by_name(song_name)
-  #   if found
-  #     found
-  #   else
-  #     Song.create(song_name)
-  #   end
-  # end
-
   def self.new_from_filename(filename)
     song_name = filename.chomp(".mp3").split(" - ")
     genre = Genre.find_or_create_by_name(song_name[2])
