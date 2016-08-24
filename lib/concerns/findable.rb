@@ -1,20 +1,11 @@
-module Concerns::Findable
-  def find_by_name(name)
-    result = nil
-    all.each do |item|
-      if item.name == name
-        result = item
-      end
+module Concerns
+  module Findable
+    def find_by_name(name)
+      all.detect {|item| name == item.name} || nil
     end
-    result
-  end
 
-  def find_or_create_by_name(name)
-    if find_by_name(name)
-      return find_by_name(name)
-    else
-      result = create(name)
+    def find_or_create_by_name(name)
+      find_by_name(name) || create(name)
     end
-    result
   end
 end
