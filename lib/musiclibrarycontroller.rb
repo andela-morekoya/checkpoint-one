@@ -5,42 +5,34 @@ class MusicLibraryController
 
   def initialize(path = "./db/mp3s")
     MusicImporter.new(path).import
-    @menu = {
-      "list songs" => :list_songs,
-      "list artists" => :list_artists,
-      "list genres" => :list_genres,
-      "play song" => :play_song,
-      "list artist" => :list_artist,
-      "list genre" => :list_genre,
-      "help" => :list_commands
-    }
+    # @menu = {
+    #   "list songs" => :list_songs,
+    #   "list artists" => :list_artists,
+    #   "list genres" => :list_genres,
+    #   "play song" => :play_song,
+    #   "list artist" => :list_artist,
+    #   "list genre" => :list_genre,
+    #   "help" => :list_commands,
+    #   "exit" => :exit
+    # }
   end
 
   def call
     Message.intro
-    command = gets.downcase
+    command = gets.chomp.downcase
     run_command(command)
 
   end
 
   def run_command(command)
-    if @menu.keys.include?(command)
-      send(@menu[command])
-      call
-    elsif command != "exit"
-      Message.invalid
-      call
-    else
-      return
-    end
+    Message.invalid unless send(command.tr(" ", "_"))
+    call
   end
 
   def list_songs
     Song.all.each.with_index(1) do |song, index|
-      Message.song_name_with_index(
-        index,song.artist.name,song.name,song.genre.name
-        )
-    end
+      Message.song_name_with_index(index, song)
+    end      
   end
 
   def list_artists
@@ -54,38 +46,37 @@ class MusicLibraryController
   def play_song
     size = Song.all.length
     Message.what_song(size)
-    selection = gets.to_i - 1
+    selection = gets.chomp.to_i - 1
 
-    if [0..size].include? selection
-      Message.invalid_song
-    else 
+    if [0..size].include? selection && selection
       Message.playing(Song.all[selection])
+      
+    else 
+      Message.invalid_song
     end
   end
 
   def list_artist
     Message.get_name(Artist)
-    result = Artist.find_by_name(gets)
+    result = Artist.find_by_name(gets.chomp)
     print_data(result)
   end
 
   def list_genre
     Message.get_name(Genre)
-    result = Genre.find_by_name(gets)
+    result = Genre.find_by_name(gets.chomp)
     print_data(result)
   end
 
   def print_data(klass)
     if klass
-      klass.songs.each do |song|
-        Message.song_name(song.artist.name, song.name, song.genre.name)
-      end
+      klass.songs.each {|song| Message.song_name(song)}
     else
       Message.not_found(klass)
     end
   end
 
-  def list_commands
+  def help
     Message.list_commands
   end
 end
