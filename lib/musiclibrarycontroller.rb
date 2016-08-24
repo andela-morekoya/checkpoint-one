@@ -50,7 +50,7 @@ class MusicLibraryController
     Message.what_song(size)
     selection = gets.chomp.to_i - 1
 
-    if [0..size].include? selection && selection
+    if [0..size].include?(selection) && selection
       Message.invalid_song
     else 
       Message.playing(Song.all[selection])
