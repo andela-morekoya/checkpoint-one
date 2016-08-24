@@ -14,9 +14,10 @@ class Genre
   end
 
   def add_song(song)
-    song.genre = self if song.genre != self
+    song.genre = self unless song.genre == self
     @songs.push(song)
     @genre_artists.push(song.artist) unless @genre_artists.include?song.artist
+    song.artist.add_genre(song) if song.artist
   end
 
   def artists
