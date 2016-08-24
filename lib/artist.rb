@@ -31,11 +31,9 @@ class Artist
   end
 
   def add_song(song)
-    @song = song.name
-    
+    @song = song.name 
     save
-
-    song.artist = self if song.artist != self
+    song.artist = self unless song.artist == self
     @songs.push(song) unless @songs.include?(song)
     @song_genres.push(song.genre) unless @song_genres.include?(song.genre)
   end
