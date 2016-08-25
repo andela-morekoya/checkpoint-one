@@ -20,7 +20,7 @@ class Message
   end
 
   def self.not_found(klass)
-    puts "\t#{klass} not found"
+    puts "\t#{klass.to_s} not found"
   end
 
   def self.list_commands
@@ -37,7 +37,7 @@ class Message
   end
 
   def self.song_name(song)
-    puts song.full_name
+    puts "\t#{song.full_name}"
   end
 
   def self.song_name_with_index(index, song)

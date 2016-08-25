@@ -17,7 +17,7 @@ class Artist
   def add_song(song)
     @song = song.name 
     save
-    song.artist = self unless song.artist == self
+    song.artist ||= self
     @songs.push(song) unless @songs.include?(song)
   end
 
