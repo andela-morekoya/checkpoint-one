@@ -15,7 +15,11 @@ class MusicLibraryController
 
   def run_command(command)
     if command != "exit"
-      Message.invalid unless send(command.tr(" ", "_")) 
+      begin
+        send(command.tr(" ", "_"))
+      rescue
+        Message.invalid
+      end
       call
     end
   end
@@ -39,10 +43,10 @@ class MusicLibraryController
     Message.what_song(size)
     selection = gets.chomp.to_i - 1
 
-    if [0..size].include?(selection) && selection
-      Message.invalid_song
-    else 
+    if (0..size).include?(selection)
       Message.playing(Song.all[selection])
+    else 
+      Message.invalid_song
     end
   end
 
